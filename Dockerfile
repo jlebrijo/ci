@@ -21,9 +21,9 @@ RUN ./build.sh --silent --confirm
 RUN cp /root/phantomjs/bin/phantomjs /usr/local/bin/
 
 # RVM
-RUN sudo su - jenkins
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable --ruby
+RUN chown -R jenkins:jenkins /usr/local/rvm
 
 # Supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/jenkins.conf
